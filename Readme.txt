@@ -1,6 +1,6 @@
 bach
 
-cd qr-code-generator
+cd password-generator
 
 
 python -m pip install -r requirements.txt
