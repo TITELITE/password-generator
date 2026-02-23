@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TITELITE Password Generator</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>TITELITE Password Generator</h1>
+
+    <section class="card">
+      <label class="label" for="charset">Символы для генерации</label>
+      <textarea id="charset" class="textarea" rows="3" spellcheck="false">{{ default_charset }}</textarea>
+      <div class="hint">Совет: оставь как есть или задай свой набор (например: abc123!@#)</div>
+
+      <div class="row">
+        <div class="col">
+          <label class="label" for="length">Длина ({{ min_len }}–{{ max_len }})</label>
+          <select id="length" class="select">
+            {% for n in range(min_len, max_len + 1) %}
+              <option value="{{ n }}" {% if n == 18 %}selected{% endif %}>{{ n }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="col">
+          <label class="label">&nbsp;</label>
+          <button id="generateBtn" class="btn">Generate 20 passwords</button>
+        </div>
+      </div>
+
+      <div id="error" class="error" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <h2>Результат</h2>
+      <div id="list" class="list"></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
